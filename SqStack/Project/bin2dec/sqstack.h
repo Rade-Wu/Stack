@@ -7,10 +7,11 @@
 
 #define Ok 1
 #define Error 0
-#define STACK_INIT_SIZE  100
+#define STACK_INIT_SIZE  20
 #define STACK_NEW_SIZE   10
 typedef int Status;
-typedef int Elemtype;
+/*typedef int Elemtype;*/
+typedef char Elemtype;
 
 typedef struct 
 {
