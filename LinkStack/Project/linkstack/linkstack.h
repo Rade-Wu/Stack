@@ -19,6 +19,14 @@ typedef struct LinkStack
     int count;
 }LinkStack;
 
+Status InitLStack(LinkStack *s);
+bool LStackIsEmpty(LinkStack *s);
+Status GetTopStack(LinkStack *s,Elemtype *e);
+Status ClearLStack(LinkStack *s);
+Status DestoryLStack(LinkStack *s);
+Status LStackLength(LinkStack *s,int *Length);
+Status PushLStack(LinkStack *s,Elemtype e);
+Status PopLStack(LinkStack *s,Elemtype *e);
 
 #endif
 

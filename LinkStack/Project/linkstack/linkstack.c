@@ -34,7 +34,7 @@ bool LStackIsEmpty(LinkStack *s)
 }
 
 /*得到栈顶元素的值*/
-Elemtype *GetTopStack(LinkStack *s,Elemtype *e)
+Status GetTopStack(LinkStack *s,Elemtype *e)
 {
     if((s->top)==NULL)
     {
@@ -42,7 +42,7 @@ Elemtype *GetTopStack(LinkStack *s,Elemtype *e)
         return Error;
     }
     *e = s->top->data;
-    return  e;
+    return  Ok;
 }
 
 /*清空一个栈*/
@@ -77,9 +77,15 @@ Status DestoryLStack(LinkStack *s)
 }
 
 /*测量栈的长度*/
-int *LStackLength(LinkStack *s,int *Length)
+Status LStackLength(LinkStack *s,int *Length)
 {
-
+    if((s->top)=NULL)
+    {
+        puts("There is no stack!");
+        return Error;
+    }
+    *Length=s->count;
+    return Ok;
 }
 
 /*进栈*/
@@ -89,13 +95,14 @@ Status PushLStack(LinkStack *s,Elemtype e)
     LinkStackPtr p;
     p = (LinkStackPtr)malloc(sizeof(StackNode));
     p->data = e;
-    p->next = s->top/*将当前栈顶元素赋值给新结点的后继*/
+    p->next = s->top;/*将当前栈顶元素赋值给新结点的后继*/
     s->top = p; /*将新结点p赋值给栈顶指针*/
     s->count++;
     return Ok;
 }
 
 /*出栈*/
+/*删除s的栈顶元素，用e返回其值*/
 Status PopLStack(LinkStack *s,Elemtype *e)
 {
     LinkStackPtr p;
@@ -108,4 +115,6 @@ Status PopLStack(LinkStack *s,Elemtype *e)
     s->count--;
     return Ok;
 }
+
+
 
